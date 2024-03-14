@@ -1,6 +1,9 @@
 project:
+  type: website
   title: "Mercator-data"
   output-dir: docs
+
+
 
 
 

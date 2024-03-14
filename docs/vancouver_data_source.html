@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data sources</title>
+<title>Vacouver Development Permits</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,15 +74,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#walkthrough-of-process" id="toc-walkthrough-of-process" class="nav-link active" data-scroll-target="#walkthrough-of-process">Walkthrough of process</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#open-data-portal" id="toc-open-data-portal" class="nav-link" data-scroll-target="#open-data-portal">Open Data Portal</a></li>
+  <li><a href="#shape-your-city" id="toc-shape-your-city" class="nav-link" data-scroll-target="#shape-your-city">Shape your city</a></li>
+  <li><a href="#city-of-vancouver-services" id="toc-city-of-vancouver-services" class="nav-link" data-scroll-target="#city-of-vancouver-services">City Of Vancouver Services</a></li>
+  </ul></li>
+  <li><a href="#scraping-data-source" id="toc-scraping-data-source" class="nav-link" data-scroll-target="#scraping-data-source">Scraping Data Source</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data sources</h1>
+<h1 class="title">Vacouver Development Permits</h1>
 </div>
 
 
@@ -99,21 +114,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="data-sources" class="level1">
-<h1>Data sources</h1>
-<section id="walkthrough-of-proccess" class="level2">
-<h2 class="anchored" data-anchor-id="walkthrough-of-proccess">Walkthrough of proccess</h2>
+<section id="walkthrough-of-process" class="level2">
+<h2 class="anchored" data-anchor-id="walkthrough-of-process">Walkthrough of process</h2>
+<section id="overview" class="level3">
+<h3 class="anchored" data-anchor-id="overview">Overview</h3>
 <p>First I searched for open data. Many regions across Canada release data on systems like the <a href="https://search.open.canada.ca/data/">Open Government Data Portal</a>. BC has <a href="https://catalogue.data.gov.bc.ca/">one</a> and Vancouver has <a href="https://opendata.vancouver.ca/pages/home/">one</a>.</p>
-<p>The Vancouver data hub had one <a href="#Open-Data-Portal">dataset</a> but it only included building permits. As these are different from development permits, I continued my search.</p>
-<p>Next, I searched directly for development permits in Vancouver. I found the <a href="#Shape-your-city">Shape your city</a> page. This was missing a lot of info.</p>
-<p>Finally, I dug around with any construction permits in Vancouver and noticed that you could search for building permits. That <a href="#City-Of-Vancouver-Services">search page</a> contained other types of permits including development permits.</p>
+<p>The Vancouver data hub had one <a href="#open-data-portal">dataset</a> but it only included building permits. As these are different from development permits, I continued my search.</p>
+<p>Next, I searched directly for development permits in Vancouver. I found the <a href="#shape-your-city">Shape your city</a> page. This was missing a lot of info.</p>
+<p>Finally, I dug around with any construction permits in Vancouver and noticed that you could search for building permits. That <a href="#city-of-vancouver-services">search page</a> contained other types of permits including development permits.</p>
 </section>
-<section id="open-data-portal" class="level2">
-<h2 class="anchored" data-anchor-id="open-data-portal">Open Data Portal</h2>
+<section id="open-data-portal" class="level3">
+<h3 class="anchored" data-anchor-id="open-data-portal">Open Data Portal</h3>
 <p>Vancouver has an open data portal. This is available via an <a href="https://opendata.vancouver.ca/explore/dataset/issued-building-permits/api/?dataChart=eyJxdWVyaWVzIjpbeyJjaGFydHMiOlt7InR5cGUiOiJsaW5lIiwiZnVuYyI6IkFWRyIsInlBeGlzIjoicGVybWl0ZWxhcHNlZGRheXMiLCJzY2llbnRpZmljRGlzcGxheSI6dHJ1ZSwiY29sb3IiOiJyYW5nZS1jdXN0b20ifV0sInhBeGlzIjoiaXNzdWVkYXRlIiwibWF4cG9pbnRzIjpudWxsLCJ0aW1lc2NhbGUiOiJ5ZWFyIiwic29ydCI6IiIsInNlcmllc0JyZWFrZG93biI6InBlcm1pdGNhdGVnb3J5IiwiY29uZmlnIjp7ImRhdGFzZXQiOiJpc3N1ZWQtYnVpbGRpbmctcGVybWl0cyIsIm9wdGlvbnMiOnt9fX1dLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D">api</a></p>
 <p>This contains only building permits and only issued permits. <strong>Doesn’t work for our purposes</strong>. Maybe useful elsewhere.</p>
-<section id="schema" class="level3">
-<h3 class="anchored" data-anchor-id="schema">Schema:</h3>
+<section id="schema" class="level4">
+<h4 class="anchored" data-anchor-id="schema">Schema:</h4>
 <div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"permitnumber"</span><span class="fu">:</span><span class="st">"DB-2016-01042"</span><span class="fu">,</span></span>
@@ -163,13 +178,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="shape-your-city" class="level2">
-<h2 class="anchored" data-anchor-id="shape-your-city">Shape your city</h2>
+<section id="shape-your-city" class="level3">
+<h3 class="anchored" data-anchor-id="shape-your-city">Shape your city</h3>
 <p>Hub for getting community feedback on projects. https://www.shapeyourcity.ca/development</p>
 <p>Does not contain all the information required. Unknown refresh cadence. <strong>Does not work</strong></p>
 </section>
-<section id="city-of-vancouver-services" class="level2">
-<h2 class="anchored" data-anchor-id="city-of-vancouver-services">City Of Vancouver Services</h2>
+<section id="city-of-vancouver-services" class="level3">
+<h3 class="anchored" data-anchor-id="city-of-vancouver-services">City Of Vancouver Services</h3>
 <p>Searchable by Address, Number, and Date. Contains all sorts of permits including development, building, electrical, gas, fire, Mechanical, and plumbing. Could also be useful elsewhere.</p>
 <p>Searching on the 8th of March gave me results for permit applications created that same day.</p>
 <p>Searching presents a table such as:</p>
@@ -297,8 +312,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Snapshot_2024-03-09_15-14-59.png</figcaption>
 </figure>
 </div>
-<section id="scraping-data-source" class="level4">
-<h4 class="anchored" data-anchor-id="scraping-data-source">Scraping Data Source</h4>
+</section>
+</section>
+<section id="scraping-data-source" class="level2">
+<h2 class="anchored" data-anchor-id="scraping-data-source">Scraping Data Source</h2>
+<p>The usable data source seems to be the city of Vancouver services.</p>
 <ul>
 <li>data is not url encoded
 <ul>
@@ -515,7 +533,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
 <section id="scrapping-remaining-info" class="level4">
 <h4 class="anchored" data-anchor-id="scrapping-remaining-info">Scrapping remaining info</h4>
 <div id="925064af-81e1-45f8-939a-925c7eb5ea05" class="cell" data-execution_count="14">
@@ -531,7 +548,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>This time the data is encoded in the url. BeutifulSoup can be used to scrape these pages quickly.</p>
-</section>
 </section>
 </section>
 
@@ -616,6 +632,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
